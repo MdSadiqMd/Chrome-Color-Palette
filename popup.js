@@ -1,30 +1,41 @@
-const btn = document.querySelector('.change-color-button');
-const colorGrid = document.querySelector('.color-grid');
-const colorValue = document.querySelector('.color-value');
+const btn = document.querySelector('.changeColorBtn');
+const colorGrid = document.querySelector('.colorGrid');
+const colorValue = document.querySelector('.colorValue');
 
 btn.addEventListener('click', async () => {
-    // Query the active tab in the current window
+    // Saving the color to clipboard
+    chrome.storage.sync.get('color', ({ color }) => {
+        console.log('color: ', color);
+    });
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-    // Execute the pickColor function in the tab's context using chrome.scripting
-    chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        function: pickColor,
-    }, async (injectionResults) => {
-        const [data] = injectionResults;
-        if (data.result) {
-            const color = data.result.sRGBHex;
-            colorGrid.style.backgroundColor = color;
+    chrome.scripting.executeScript(
+        {
+            target: { tabId: tab.id },
+            function: pickColor,
+        },
+        async (injectionResults) => {
+            const [data] = injectionResults;
+            if (data.result) {
+                const color = data.result.sRGBHex;
+                colorGrid.style.backgroundColor = color;
+                colorValue.innerText = color;
+                try {
+                    await navigator.clipboard.writeText(color);
+                } catch (err) {
+                    console.error(err);
+                }
+            }
         }
-    });
+    );
 });
 
 async function pickColor() {
+    // using eyeDropper for picking
     try {
-        // Create a new EyeDropper instance and open it
-        const eyeDropper = new eyeDropper();
+        const eyeDropper = new EyeDropper();
         return await eyeDropper.open();
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        console.error(err);
     }
 }
