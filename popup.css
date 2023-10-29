@@ -1,32 +1,39 @@
 body {
-    background: #f1f5f9;
-}
-.wrapper {
-    width: 300px;
-    text-align: center;
-}
-.changeColorBtn {
     width: 200px;
-    outline: none;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+button.ChangeColorButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0073e6;
+    color: #fff;
     border: none;
-    border-radius: 2px;
-    padding: 5px;
-    background: #facc15;
+    border-radius: 5px;
     cursor: pointer;
-}
-.colorGrid {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-}
-.selectedColor {
-    display: flex;
-    align-items: center;
     margin-top: 20px;
 }
 
-.colorValue {
-    margin-left: 5px;
-    font-weight: bold;
+div.SelectedColor {
+    display: none;
+    margin-top: 20px;
+}
+
+span.colorGrid {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border: 1px solid #333;
+    margin-right: 10px;
+}
+
+span.colorValue {
+    color: #333;
 }
