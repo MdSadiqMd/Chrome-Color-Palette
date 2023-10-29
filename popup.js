@@ -3,6 +3,7 @@ const colorGrid = document.querySelector('.colorGrid');
 const colorValue = document.querySelector('.colorValue');
 
 btn.addEventListener('click', async () => {
+    // Storing the color to clipboard 
     chrome.storage.sync.get('color', ({ color }) => {
         console.log('color: ', color);
     });
@@ -31,7 +32,6 @@ btn.addEventListener('click', async () => {
 
 async function pickColor() {
     try {
-        // Picker
         const eyeDropper = new EyeDropper();
         return await eyeDropper.open();
     } catch (err) {
