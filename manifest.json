@@ -2,11 +2,16 @@
     "name": "Chrome Color Palette",
     "description": "A color Picker Extension",
     "version": "1.0",
-    "manifest_version": 3, 
+    "manifest_version": 3,
     "background": {
         "service": "background.js"
     },
-    "icons":{
-        
+    "action":{
+        "default_popup":"popup.html"
+    },
+    "icons": {
+        "16": "/images/color-palette_16.png",
+        "32": "/images/color-palette_32.png",
+        "48": "/images/color-palette_48.png"
     }
 }
