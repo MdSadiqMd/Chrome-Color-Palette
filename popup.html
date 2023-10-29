@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <div class="wrapper">
-    <h2>Chrome Color Palette</h2>
-    <button class="ChangeColorButton">Pick Color</button>
-    <div class="SelectedColor">
-        <span class="colorGrid"></span>
-        <span class="colorValue"></span>
+    <div class="popup-container">
+        <h2>Chrome Color Palette</h2>
+        <button class="change-color-button">Pick Color</button>
+        <div class="selected-color">
+            <div class="color-preview">
+                <span class="color-grid"></span>
+            </div>
+            <span class="color-value">Color Code: #FFFFFF</span>
+        </div>
     </div>
-    </div>
-    <script src="popup.js"></script> 
+    <script src="popup.js"></script>
 </body>
 </html>
